@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exceptions\InvalidSentenceException.cs" />
+    <Compile Include="Exceptions\InvalidWordException.cs" />
     <Compile Include="Sentence.cs" />
     <Compile Include="Text.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
