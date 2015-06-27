@@ -44,6 +44,10 @@ namespace SentenceSpliter
             string[] split = text.Split(new char[] { '.', '!', '?' }); // this splits the oririginal text into a set of strings based on sentance terminators 
             foreach (string sentence in split)
             {
+                if (sentence == "")
+                {
+                    continue;
+                }
                 sentences.Add(new Sentence(sentence));
             }
             return sentences;

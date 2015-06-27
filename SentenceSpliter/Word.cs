@@ -55,6 +55,10 @@ namespace SentenceSpliter
             string[] split = sentence.Split(' ');
             foreach (string word in split)
             {
+                if (word == "")
+                {
+                    continue;
+                }
                 words.Add(new Word(word));
             }
             return words;
