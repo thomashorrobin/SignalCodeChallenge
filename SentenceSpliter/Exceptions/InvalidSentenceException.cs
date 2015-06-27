@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SentenceSpliter.Exceptions
 {
-    class InvalidSentenceException
+    class InvalidSentenceException : Exception
     {
         public string SentenceText { get; set; }
 
