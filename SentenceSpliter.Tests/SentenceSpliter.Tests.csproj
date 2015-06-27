@@ -50,8 +50,16 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="SentenceTests.cs" />
+    <Compile Include="TextTests.cs" />
     <Compile Include="WordTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SentenceSpliter\SentenceSpliter.csproj">
+      <Project>{2349dd62-904a-4f5a-b242-12e307cc1f46}</Project>
+      <Name>SentenceSpliter</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
