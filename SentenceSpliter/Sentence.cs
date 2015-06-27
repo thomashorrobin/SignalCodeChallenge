@@ -30,7 +30,30 @@ namespace SentenceSpliter
         /// <param name="sentence">The full text of the sentance</param>
         public Sentence(string sentence)
         {
+            if (!ValidSentance(sentence))
+            {
+                throw new Exceptions.InvalidSentenceException(sentence);
+            }
             Words = Word.SplitSentenceToWords(sentence);
+        }
+
+        /// <summary>
+        /// This tests if a sentence is valid
+        /// </summary>
+        /// <param name="sentence">any string representing a sentence</param>
+        /// <returns>true if the sentence is valid</returns>
+        private static bool ValidSentance(string sentence)
+        {
+            string s = sentence.Substring(0, sentence.Length - 1); // removes the final charcter from the string
+
+            if (s.Contains('?') || s.Contains('!') || s.Contains('.')) // if there exists a sentence terminator in the rest of the string the sentence isn't valid
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         /// <summary>

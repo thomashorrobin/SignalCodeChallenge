@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SentenceSpliter.Exceptions;
 
 namespace SentenceSpliter
 {
@@ -41,7 +42,12 @@ namespace SentenceSpliter
         /// <param name="word"></param>
         public Word(string word)
         {
-            WordTextPunctuation = word.Trim();
+            if (word == "" || word.Contains(' '))
+            {
+                InvalidWordException ex = new InvalidWordException(word);
+                throw ex;
+            }
+            WordTextPunctuation = word;
         }
 
         /// <summary>
@@ -59,7 +65,15 @@ namespace SentenceSpliter
                 {
                     continue;
                 }
-                words.Add(new Word(word));
+                try
+                {
+                    words.Add(new Word(word));
+                }
+                catch (InvalidWordException ex)
+                {
+                    ex.SentenceText = sentence;
+                    throw ex;
+                }
             }
             return words;
         }
