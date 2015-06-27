@@ -8,24 +8,55 @@ namespace SentenceSpliter
 {
     class Text
     {
+        /// <summary>
+        /// A list of all sentances in the Text
+        /// </summary>
         public List<Sentence> Sentences { get; private set; }
 
-        public Text(string text)
+        /// <summary>
+        /// Gets the word count of the entire text
+        /// </summary>
+        public int WordCount
         {
-            Sentences = SplitTextToSentances(text);
+            get
+            {
+                int count = 0;
+                foreach (Sentence sentence in Sentences)
+                {
+                    count += sentence.WordCount;
+                }
+                return count;
+            }
         }
 
         /// <summary>
-        /// this takes a full text and splits it into sentances
+        /// Gets the number of sentances in the text
         /// </summary>
-        /// <param name="text">A full text containing multiple sentances</param>
-        /// <returns>Return a list of sentance objects</returns>
-        private static List<Sentence> SplitTextToSentances(string text)
+        public int SentenceCount
         {
-            List<Sentence> sentences = new List<Sentence>();
-            string[] split = text.Split(new char[] { '.', '!', '?' }); // this splits the oririginal text into a set of strings based on sentance terminators 
+            get
+            {
+                return Sentences.Count;
+            }
+        }
 
-            return sentences;
+        /// <summary>
+        /// Finds a list of sentances with the highest or highest equal word count
+        /// </summary>
+        /// <returns>Returns a list containing either a single or mulitple sentences</returns>
+        public List<Sentence> SentenceWithMostWords()
+        {
+            int highestWordCount = Sentences.OrderByDescending(e => e.WordCount).First().WordCount;
+            return Sentences.Where(e => e.WordCount == highestWordCount).ToList();
+        }
+
+        /// <summary>
+        /// The only construtor for the Text class
+        /// </summary>
+        /// <param name="text">The whole text. The constuctor will handle annominies</param>
+        public Text(string text)
+        {
+            Sentences = Sentence.SplitTextToSentances(text);
         }
     }
 }
