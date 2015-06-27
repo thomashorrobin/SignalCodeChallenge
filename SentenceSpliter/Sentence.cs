@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SentenceSpliter
 {
-    class Sentence
+    public class Sentence
     {
         /// <summary>
         /// An ordered list of Words in the sentance

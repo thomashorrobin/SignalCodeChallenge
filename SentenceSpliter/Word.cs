@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SentenceSpliter
 {
-    class Word
+    public class Word
     {
         /// <summary>
         /// A string representing the word including any punctuation

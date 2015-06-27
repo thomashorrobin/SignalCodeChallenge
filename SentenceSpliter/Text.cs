@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SentenceSpliter
 {
-    class Text
+    public class Text
     {
         /// <summary>
         /// A list of all sentances in the Text
