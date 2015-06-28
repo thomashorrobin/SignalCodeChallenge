@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -95,6 +96,17 @@ namespace SentenceSpliter
                 commoness.Add(item.Count);
             }
             int i = commoness.OrderByDescending(e => e).ToList()[rank];
+            #region
+            Debug.WriteLine("At some point the most common word occured " + i + " times");
+            foreach (var item in groupedWords)
+            {
+                string s = item.Value;
+                if (s.Contains("icrosof"))
+                {
+                    Debug.WriteLine("Hmm: " + s);
+                }
+            }
+            #endregion
             List<string> commonWords = new List<string>();
             foreach (var word in groupedWords.Where(e => e.Count == i))
             {
