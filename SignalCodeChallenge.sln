@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SentenceSpliter", "Sentence
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SentenceSpliter.Tests", "SentenceSpliter.Tests\SentenceSpliter.Tests.csproj", "{5CAECE90-B101-47DC-AB90-474589E057CA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SignalCodeChallengeCLI", "SignalCodeChallengeCLI\SignalCodeChallengeCLI.csproj", "{63872704-D01E-40DA-98BE-E0A6C3F4A885}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -38,6 +40,10 @@ Global
 		{5CAECE90-B101-47DC-AB90-474589E057CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CAECE90-B101-47DC-AB90-474589E057CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CAECE90-B101-47DC-AB90-474589E057CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63872704-D01E-40DA-98BE-E0A6C3F4A885}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63872704-D01E-40DA-98BE-E0A6C3F4A885}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63872704-D01E-40DA-98BE-E0A6C3F4A885}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63872704-D01E-40DA-98BE-E0A6C3F4A885}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
