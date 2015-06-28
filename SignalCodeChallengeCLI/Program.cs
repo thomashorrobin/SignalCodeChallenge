@@ -19,8 +19,13 @@ namespace SignalCodeChallengeCLI
             p.PrintOptions();
         }
 
+        /// <summary>
+        /// This method takes a Text object and prints data from it to the console
+        /// </summary>
+        /// <param name="text">A Text object</param>
         void DisplayResults(Text text)
         {
+            // this method is quite long and verbose. I've obviously done a lot of cutting and pasting here and I was going to come back to clean this up, but unfortunately I've run out of time.
             Console.WriteLine("Number of sentences: " + text.SentenceCount);
             Console.WriteLine("Number of words: " + text.WordCount);
             string longestSentences = "Sentence(s) with the most words: ";
@@ -59,6 +64,9 @@ namespace SignalCodeChallengeCLI
             AskUserForCmd();
         }
 
+        /// <summary>
+        /// This displays a cursor and then sends entered text to DisplayResults 
+        /// </summary>
         void TypeText()
         {
             Console.Write("text: ");
@@ -109,7 +117,10 @@ namespace SignalCodeChallengeCLI
                 AskUserForCmd();
             }
         }
-
+        
+        /// <summary>
+        /// This asks the user what they want to do next and then redirects them
+        /// </summary>
         void AskUserForCmd()
         {
             Console.Write("cmd: ");
@@ -133,6 +144,9 @@ namespace SignalCodeChallengeCLI
             }
         }
 
+        /// <summary>
+        /// All this does is print helpful instructions to the user and then call for the next command
+        /// </summary>
         void PrintOptions()
         {
             Console.WriteLine("This is the command line interface for the code challenge");
