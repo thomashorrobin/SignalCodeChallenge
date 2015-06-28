@@ -35,7 +35,7 @@ namespace SignalCodeChallengeCLI
             }
             Console.WriteLine(longestSentences);
             string mostFrequentWord = "Most frequently used word(s): ";
-            List<string> mostFrequentWords = text.FindMostCommonWord(1);
+            List<string> mostFrequentWords = text.FindMostCommonWord(0);
             if (mostFrequentWords.Count > 0)
             {
                 mostFrequentWord += mostFrequentWords[0];
