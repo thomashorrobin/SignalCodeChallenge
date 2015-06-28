@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="SentenceTests.cs" />
     <Compile Include="TextTests.cs" />
+    <Compile Include="TestIntergenExample.cs" />
     <Compile Include="WordTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
