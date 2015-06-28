@@ -24,7 +24,7 @@ namespace SentenceSpliter
                 {
                     return "";
                 }
-                string sentenceSnippet = Words[0].WordTextPunctuation; // this is seperate from the main loop because the first word goes on with no space 
+                string sentenceSnippet = Words[0].WordTextPunctuation; // this is seperate from the main loop because the first word gets appended with no space 
                 for (int i = 1; i < Math.Min(Words.Count,4); i++) // I've used the Math.Min fuction here to aviod IndexOutOfRange exceptions
                 {
                     sentenceSnippet += " " + Words[i].WordTextPunctuation;
@@ -54,7 +54,7 @@ namespace SentenceSpliter
         /// <param name="sentence">The full text of the sentance</param>
         public Sentence(string sentence)
         {
-            // these remove carriage returns
+            // these statements remove carriage returns
             sentence.Replace("\n", String.Empty);
             sentence.Replace("\r", String.Empty);
             sentence.Replace("\r\n", String.Empty);
