@@ -75,12 +75,22 @@ namespace SentenceSpliter
             }
             List<int> sortedWordLengths = wordLengths.OrderByDescending(e => e).ToList(); // sort them from highest to lowest so we can fetch highest, 3rd highest, etc
             List<string> longestWords = new List<string>();
-            foreach (Word word in Words.Where(e => e.WordLength == sortedWordLengths[rank])) // filter words by their length, the length to use is calc using rank
+            int wordLength = 0;
+            try
+            {
+                wordLength = sortedWordLengths[rank]; // try to use what has been passed in with the rank parameter but it might be out of range
+            }
+            catch (IndexOutOfRangeException)
+            {
+                wordLength = sortedWordLengths.Last(); // if out of range just call the last one (this doesn't help if there's nothing in the list though)
+            }
+            foreach (Word word in Words.Where(e => e.WordLength == wordLength)) // filter words by their length, the length to use is calc using rank
             {
                 longestWords.Add(word.WordText);
             }
             return longestWords;
         }
+
 
         /// <summary>
         /// Finds the most common word
@@ -89,26 +99,18 @@ namespace SentenceSpliter
         /// <returns>a list of either one or more strings that represtent the word or words equally tied at that rank</returns>
         public List<string> FindMostCommonWord(int rank)
         {
-            var groupedWords = Words.GroupBy(e => e.WordText).Select(group => new { Value = group.Key, Count = group.Count() }).OrderByDescending(x => x.Count).ToList();
+            var groupedWords = Words.GroupBy(e => e.WordText) // this linq statement groups and counts words based on their length
+                .Select(group => new { Value = group.Key, Count = group.Count() })
+                .OrderByDescending(x => x.Count)
+                .ToList();
             ISet<int> commoness = new HashSet<int>();
             foreach (var item in groupedWords)
             {
-                commoness.Add(item.Count);
+                commoness.Add(item.Count); // add the count of each word to the set
             }
-            int i = commoness.OrderByDescending(e => e).ToList()[rank];
-            #region
-            Debug.WriteLine("At some point the most common word occured " + i + " times");
-            foreach (var item in groupedWords)
-            {
-                string s = item.Value;
-                if (s.Contains("icrosof"))
-                {
-                    Debug.WriteLine("Hmm: " + s);
-                }
-            }
-            #endregion
+            int i = commoness.OrderByDescending(e => e).ToList()[rank]; // this gets the number of times the most common word occured
             List<string> commonWords = new List<string>();
-            foreach (var word in groupedWords.Where(e => e.Count == i))
+            foreach (var word in groupedWords.Where(e => e.Count == i)) // this filters for words that occured that many times
             {
                 commonWords.Add(word.Value);
             }
@@ -128,5 +130,9 @@ namespace SentenceSpliter
                 Words.AddRange(sentence.Words);
             }
         }
+
+        public List<string> FindLongestWord() { return FindLongestWord(0); }
+        public List<string> FindMostCommonWord() { return FindMostCommonWord(0); }
+        public List<Sentence> FindSentenceWithMostWords() { return FindSentenceWithMostWords(0); } 
     }
 }

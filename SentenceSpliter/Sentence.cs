@@ -20,16 +20,16 @@ namespace SentenceSpliter
         {
             get
             {
-                if (Words.Count == 0)
+                if (Words.Count == 0) // an empty list is going to give us problems, it's better to just return an empty string
                 {
                     return "";
                 }
-                string sentenceSnippet = Words[0].WordTextPunctuation;
-                for (int i = 1; i < Math.Min(Words.Count,4); i++)
+                string sentenceSnippet = Words[0].WordTextPunctuation; // this is seperate from the main loop because the first word goes on with no space 
+                for (int i = 1; i < Math.Min(Words.Count,4); i++) // I've used the Math.Min fuction here to aviod IndexOutOfRange exceptions
                 {
                     sentenceSnippet += " " + Words[i].WordTextPunctuation;
                 }
-                if (Words.Count > 4)
+                if (Words.Count > 4) // if there's more than four words and add trailing dots, they make it easier to read
                 {
                     sentenceSnippet += "...";
                 }
@@ -54,10 +54,12 @@ namespace SentenceSpliter
         /// <param name="sentence">The full text of the sentance</param>
         public Sentence(string sentence)
         {
+            // these remove carriage returns
             sentence.Replace("\n", String.Empty);
             sentence.Replace("\r", String.Empty);
             sentence.Replace("\r\n", String.Empty);
             sentence.Replace("\n\r", String.Empty);
+
             if (!ValidSentance(sentence))  // basic check to see if the sentance is valid
             {
                 throw new Exceptions.InvalidSentenceException(sentence);
