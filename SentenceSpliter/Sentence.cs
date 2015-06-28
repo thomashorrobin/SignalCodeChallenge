@@ -25,9 +25,9 @@ namespace SentenceSpliter
                     return "";
                 }
                 string sentenceSnippet = Words[0].WordTextPunctuation;
-                for (int i = 1; i < Math.Min(Words.Count,3); i++)
+                for (int i = 1; i < Math.Min(Words.Count,4); i++)
                 {
-                    sentenceSnippet += Words[i].WordTextPunctuation;
+                    sentenceSnippet += " " + Words[i].WordTextPunctuation;
                 }
                 if (Words.Count > 4)
                 {
