@@ -1,0 +1,57 @@
+﻿@model SignalCodeChallenge.Models.TextResult
+
+@{
+    ViewBag.Title = "Results";
+}
+
+<h2>Results</h2>
+
+<div>
+    <h4>TextResult</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SentenceCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SentenceCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WordCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WordCount)
+        </dd>
+
+        <dt>
+            Longest Sentence(s)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LongestSentences)
+        </dd>
+
+        <dt>
+            Most common word(s)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MostCommonWords)
+        </dd>
+
+        <dt>
+            3rd longest word
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LongestWords)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index")
+</p>
