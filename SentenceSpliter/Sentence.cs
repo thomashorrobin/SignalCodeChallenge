@@ -14,6 +14,30 @@ namespace SentenceSpliter
         public List<Word> Words { get; private set; }
 
         /// <summary>
+        /// Gets the fist four words of the sentance for display purposes 
+        /// </summary>
+        public string SentenceSnippet
+        {
+            get
+            {
+                if (Words.Count == 0)
+                {
+                    return "";
+                }
+                string sentenceSnippet = Words[0].WordTextPunctuation;
+                for (int i = 1; i < Math.Min(Words.Count,3); i++)
+                {
+                    sentenceSnippet += Words[i].WordTextPunctuation;
+                }
+                if (Words.Count > 4)
+                {
+                    sentenceSnippet += "...";
+                }
+                return sentenceSnippet;
+            }
+        }
+
+        /// <summary>
         /// Gets the word count of the sentance
         /// </summary>
         public int WordCount
