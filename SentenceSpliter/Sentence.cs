@@ -54,6 +54,10 @@ namespace SentenceSpliter
         /// <param name="sentence">The full text of the sentance</param>
         public Sentence(string sentence)
         {
+            sentence.Replace("\n", String.Empty);
+            sentence.Replace("\r", String.Empty);
+            sentence.Replace("\r\n", String.Empty);
+            sentence.Replace("\n\r", String.Empty);
             if (!ValidSentance(sentence))  // basic check to see if the sentance is valid
             {
                 throw new Exceptions.InvalidSentenceException(sentence);
