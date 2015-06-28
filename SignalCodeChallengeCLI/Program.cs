@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SentenceSpliter;
+using SentenceSpliter.Exceptions;
 using System.IO;
 
 namespace SignalCodeChallengeCLI
@@ -29,7 +30,18 @@ namespace SignalCodeChallengeCLI
         {
             Console.Write("text: ");
             string text = Console.ReadLine();
-            DisplayResults(new Text(text));
+            try
+            {
+                DisplayResults(new Text(text));
+            }
+            catch (InvalidWordException ex)
+            {
+                Console.WriteLine(ex.WordText + " is not a valid word");
+            }
+            catch (InvalidSentenceException ex)
+            {
+                Console.WriteLine("\"" + ex.SentenceText + "\" is not a valid sentence");
+            }
         }
 
         void UploadFile()
@@ -44,7 +56,19 @@ namespace SignalCodeChallengeCLI
                     text = reader.ReadToEnd();
                 }
                 s.Close();
-                DisplayResults(new Text(text));
+                try
+                {
+                    Text t = new Text(text);
+                    DisplayResults(t);
+                }
+                catch (InvalidWordException ex)
+                {
+                    Console.WriteLine(ex.WordText + " is not a valid word");
+                }
+                catch (InvalidSentenceException ex)
+                {
+                    Console.WriteLine("\"" + ex.SentenceText + "\" is not a valid sentence");
+                }
             }
             else
             {
