@@ -23,6 +23,39 @@ namespace SignalCodeChallengeCLI
         {
             Console.WriteLine("Number of sentences: " + text.SentenceCount);
             Console.WriteLine("Number of words: " + text.WordCount);
+            string longestSentences = "Sentence(s) with the most words: ";
+            List<Sentence> longestSentencesList = text.FindSentenceWithMostWords(0);
+            if (longestSentencesList.Count > 0)
+            {
+                longestSentences += longestSentencesList[0].SentenceSnippet;
+                for (int i = 1; i < longestSentencesList.Count; i++)
+                {
+                    longestSentences += ", " + longestSentencesList[0].SentenceSnippet;
+                }
+            }
+            Console.WriteLine(longestSentences);
+            string mostFrequentWord = "Most frequently used word(s): ";
+            List<string> mostFrequentWords = text.FindMostCommonWord(1);
+            if (mostFrequentWords.Count > 0)
+            {
+                mostFrequentWord += mostFrequentWords[0];
+                for (int i = 1; i < mostFrequentWords.Count; i++)
+                {
+                    mostFrequentWord += ", " + mostFrequentWords[i];
+                }
+            }
+            Console.WriteLine(mostFrequentWord);
+            string longestWords = "3rd longest word(s): ";
+            List<string> longestWords2 = text.FindLongestWord(2);
+            if (longestWords2.Count > 0)
+            {
+                longestWords += longestWords2[0];
+                for (int i = 1; i < longestWords2.Count; i++)
+                {
+                    longestWords += ", " + longestWords2[i];
+                }
+            }
+            Console.WriteLine(longestWords);
             AskUserForCmd();
         }
 
