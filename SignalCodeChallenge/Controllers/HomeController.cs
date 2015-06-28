@@ -14,12 +14,6 @@ namespace SignalCodeChallenge.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult Index(string text)
-        //{
-        //    return Results(new Text(text));
-        //}
-
         [HttpPost]
         public ActionResult Results(string text)
         {
@@ -33,11 +27,6 @@ namespace SignalCodeChallenge.Controllers
             // Verify that the user selected a file
             if (file != null && file.ContentLength > 0)
             {
-                //// extract only the fielname
-                //var fileName = Path.GetFileName(file.FileName);
-                //// store the file inside ~/App_Data/uploads folder
-                //var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
-                //file.SaveAs(path);
                 using (System.IO.StreamReader reader = new System.IO.StreamReader(file.InputStream))
                 {
                     text = reader.ReadToEnd();
