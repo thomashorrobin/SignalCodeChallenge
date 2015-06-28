@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SentenceSpliter;
+using SentenceSpliter.Exceptions;
 
 namespace SentenceSpliter.Tests
 {
@@ -12,6 +13,13 @@ namespace SentenceSpliter.Tests
         {
             Word word = new Word("word?");
             Assert.AreEqual("word", word.WordText, false);
+        }
+
+        [TestMethod]
+        [ExpectedException(typeof(InvalidWordException),"Comma at frount of word should throw an exception")]
+        public void TextPunctuationAtStartThrowsException()
+        {
+            Word word = new Word(",ejfwe");
         }
 
         [TestMethod]

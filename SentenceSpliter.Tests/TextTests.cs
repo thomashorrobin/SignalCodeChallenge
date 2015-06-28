@@ -19,5 +19,11 @@ namespace SentenceSpliter.Tests
         {
             Assert.AreEqual((int)3,text.SentenceCount);
         }
+
+        [TestMethod]
+        public void TestSentenceMostCommonWord()
+        {
+            Assert.AreEqual("sentance", text.FindMostCommonWord(0)[0]);
+        }
     }
 }
