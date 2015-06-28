@@ -13,5 +13,29 @@ namespace SentenceSpliter.Tests
         {
             Assert.AreEqual((int)3,text.SentenceCount);
         }
+
+        [TestMethod]
+        public void TestWordCount()
+        {
+            Assert.AreEqual((int)68, text.WordCount);
+        }
+
+        [TestMethod]
+        public void TestMostCommonWord()
+        {
+            Assert.AreEqual("Microsoft", text.FindMostCommonWord()[0]);
+        }
+
+        [TestMethod]
+        public void TestLongestSentence()
+        {
+            Assert.AreEqual("Microsoft", text.FindSentenceWithMostWords()[0].Words[3].WordText);
+        }
+
+        [TestMethod]
+        public void TestThirdLongestWords()
+        {
+            Assert.AreEqual((int)2, text.FindLongestWord(2).Count);
+        }
     }
 }
