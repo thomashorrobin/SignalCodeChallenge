@@ -19,7 +19,7 @@ namespace SentenceSpliter.Tests
         [ExpectedException(typeof(InvalidWordException),"Comma at frount of word should throw an exception")]
         public void TextPunctuationAtStartThrowsException()
         {
-            Word word = new Word(",ejfwe");
+            Word word = new Word("ej fwe");
         }
 
         [TestMethod]
