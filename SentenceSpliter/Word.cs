@@ -47,7 +47,7 @@ namespace SentenceSpliter
                 InvalidWordException ex = new InvalidWordException(word);
                 throw ex;
             }
-            if (!Char.IsLetter(word[0])) // this finds the first char in the string and checks if it's a letter. A valid word must start with a letter
+            if (Char.IsPunctuation(word[0])) // this finds the first char in the string and checks if it's a letter. A valid word must start with a letter
             {
                 InvalidWordException ex = new InvalidWordException(word);
                 throw ex;
