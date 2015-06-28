@@ -21,7 +21,7 @@ namespace SentenceSpliter
         {
             get
             {
-                return WordTextPunctuation.Trim(new char[]{ '.','!','?',',' });
+                return WordTextPunctuation.TrimEnd(new char[]{ '.','!','?',',' }); // this removes puncutation from the END of the word, punctuation and the start of a word is invalid.
             }
         }
 
@@ -42,7 +42,12 @@ namespace SentenceSpliter
         /// <param name="word"></param>
         public Word(string word)
         {
-            if (word == "" || word.Contains(' '))
+            if (word == "" || word.Contains(' ')) // words that are empty strings or contain spaces are invalid
+            {
+                InvalidWordException ex = new InvalidWordException(word);
+                throw ex;
+            }
+            if (!Char.IsLetter(word[0])) // this finds the first char in the string and checks if it's a letter. A valid word must start with a letter
             {
                 InvalidWordException ex = new InvalidWordException(word);
                 throw ex;
@@ -58,20 +63,20 @@ namespace SentenceSpliter
         internal static List<Word> SplitSentenceToWords(string sentence)
         {
             List<Word> words = new List<Word>();
-            string[] split = sentence.Split(' ');
+            string[] split = sentence.Split(' '); // splits sentances based on a space, the only way to distiguish between words
             foreach (string word in split)
             {
-                if (word == "")
+                if (word == "") // words that are empty strings are not useful and should be ignored
                 {
                     continue;
                 }
                 try
                 {
-                    words.Add(new Word(word));
+                    words.Add(new Word(word)); // attempt to add string as a word
                 }
                 catch (InvalidWordException ex)
                 {
-                    ex.SentenceText = sentence;
+                    ex.SentenceText = sentence; // adding this info to the exception will be useful further upstream 
                     throw ex;
                 }
             }

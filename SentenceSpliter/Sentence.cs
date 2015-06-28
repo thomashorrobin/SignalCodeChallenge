@@ -30,7 +30,7 @@ namespace SentenceSpliter
         /// <param name="sentence">The full text of the sentance</param>
         public Sentence(string sentence)
         {
-            if (!ValidSentance(sentence))
+            if (!ValidSentance(sentence))  // basic check to see if the sentance is valid
             {
                 throw new Exceptions.InvalidSentenceException(sentence);
             }
@@ -67,7 +67,7 @@ namespace SentenceSpliter
             string[] split = text.Split(new char[] { '.', '!', '?' }); // this splits the oririginal text into a set of strings based on sentance terminators 
             foreach (string sentence in split)
             {
-                if (sentence == "")
+                if (sentence == "") // empty strings are valid sentences so let's just skip them
                 {
                     continue;
                 }
